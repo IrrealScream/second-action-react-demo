@@ -1,4 +1,4 @@
-name: DDeploy Project
+name: Deploy Project
 on: push
 
 jobs:
@@ -16,6 +16,7 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
