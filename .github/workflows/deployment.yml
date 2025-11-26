@@ -1,6 +1,18 @@
 name: Deploy Project
-on: [push, workflow_dispatch]
-
+on:
+  push:
+    branches:
+      - main
+      - 'dev-*' # * allows for any character except /
+      - 'feature/**' # ** allows for anything including remaining slashes
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+    branches: #for target branches
+      - main
+      - 'dev-*' # * allows for any character except /
+      - 'feature/**' # ** allows for anything including remaining slashes
 jobs:
   test:
     runs-on: ubuntu-latest
